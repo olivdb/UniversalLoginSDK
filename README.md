@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.com/EthWorks/UniversalLoginSDK.svg?branch=master)](https://travis-ci.com/EthWorks/UniversalLoginSDK)
 
-# Ethereum IdentitySDK
+# Ethereum UniversalLoginSDK
 
-Ethereum Identity SDK is composed of smart contracts, a js lib, and a relayer that help build applications using ERC [#725](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-725.md), [#735](https://github.com/ethereum/EIPs/issues/735), [#1077](https://github.com/ethereum/EIPs/pull/1077) and [#1078](https://github.com/ethereum/EIPs/pull/1078).
+Ethereum UniversalLoginSDK is composed of smart contracts, a js lib, and a relayer that help build applications using ERC [#725](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-725.md), [#735](https://github.com/ethereum/EIPs/issues/735), [#1077](https://github.com/ethereum/EIPs/pull/1077) and [#1078](https://github.com/ethereum/EIPs/pull/1078).
 
 This is a work in progress. Expect breaking changes. The code has not been audited and therefore can not be considered secure.
 Planned functionality for first release include:
@@ -13,7 +13,7 @@ Planned functionality for first release include:
 - Ether less transactions via relayer
 
 ### Structure
-This repository is organised as monorepo. 
+This repository is organised as monorepo.
 
 - [Contracts](https://github.com/EthWorks/UniversalLoginSDK/tree/master/universal-login-contracts) - all contracts used in this project
 - [Example](https://github.com/EthWorks/UniversalLoginSDK/blob/master/universal-login-example/README.md) - example app, which shows how to use SDK
@@ -21,7 +21,7 @@ This repository is organised as monorepo.
 - [SDK](https://github.com/EthWorks/UniversalLoginSDK/blob/master/universal-login-sdk/README.md) - easy way to communicate with relayer by http protocol
 
 
-## Quick example start 
+## Quick example start
 
 To install dependencies and build projects run following commands from the main project directory:
 

@@ -3,8 +3,14 @@ import ethers from 'ethers';
 import Ganache from 'ganache-core';
 import {defaultAccounts, getWallets, deployContract} from 'ethereum-waffle';
 import {ENSDeployer} from 'universal-login-relayer';
-import Clicker from '../build/Clicker';
-import Token from '../build/Token';
+// import Clicker from '../build/Clicker';
+// import Token from '../build/Token';
+import Clicker from '../../../CryptoLife/chainOfLife/build/Clicker';
+import Token from '../../../CryptoLife/chainOfLife/build/Token';
+import ChainOfLife from '../../../CryptoLife/chainOfLife/build/ChainOfLife';
+
+
+
 import {promisify} from 'util';
 import TokenGrantingRelayer from '../src/relayer/TokenGrantingRelayer';
 
@@ -30,7 +36,7 @@ const config = Object.freeze({
       registrarAddress: process.env.ENS_REGISTRAR2_ADDRESS,
       privteKey: process.env.ENS_REGISTRAR2_PRIVATE_KEY
     },
-    'popularapp.eth': {
+    'chainoflife.eth': {
       resolverAddress: process.env.ENS_RESOLVER3_ADDRESS,
       registrarAddress: process.env.ENS_REGISTRAR3_ADDRESS,
       privteKey: process.env.ENS_REGISTRAR3_PRIVATE_KEY
@@ -119,6 +125,12 @@ class Deployer {
     this.env.CLICKER_CONTRACT_ADDRESS = clickerContract.address;
   }
 
+  async deployChainOfLifeContracts() {
+    const colContract = await deployContract(this.deployer, ChainOfLife);
+    console.log(`Chain of Life contract address: ${colContract.address}`);
+    this.env.CHAINOFLIFE_CONTRACT_ADDRESS = colContract.address;
+  }
+
   runWebServer() {
     const env = {...process.env, ...this.env};
     this.spawnProcess('web', 'yarn', ['start'], {env});
@@ -149,6 +161,8 @@ class Deployer {
     await this.startRelayer();
     console.log('Deploying clicker contract...');
     await this.deployClickerContract();
+    console.log('Deploy Chain Of Life Contracts....')
+    await this.deployChainOfLifeContracts();
     console.log('Preparing relayer...');
     await this.relayer.addHooks();
     console.log('Starting example app web server...');
